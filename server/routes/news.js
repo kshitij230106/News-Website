@@ -7,7 +7,7 @@ const express = require('express');
 const router = express.Router();
 
 const NEWS_API_BASE = 'https://newsdata.io/api/1';
-const API_KEY = process.env.NEWS_API_KEY;
+const API_KEY = process.env.NEWSDATA_API_KEY;
 
 // Helper: normalize a NewsData.io article to match our frontend format
 function normalizeArticle(item) {
