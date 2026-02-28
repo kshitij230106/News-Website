@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="NewsSphere - Your one-stop global news aggregator. Top headlines from US, UK, India, Canada, Australia. Business, Tech, Sports, Entertainment, Health, Science." />
+  <meta name="keywords"
+    content="news, headlines, world news, business, technology, sports, entertainment, health, science" />
+  <meta name="author" content="NewsSphere" />
+  <meta property="og:title" content="NewsSphere - Global News Aggregator" />
+  <meta property="og:description"
+    content="Real-time news from multiple countries. Read, search, and save your favorite articles." />
+  <meta property="og:type" content="website" />
+  <title>NewsSphere - Global News Aggregator</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- Sticky Navigation -->
+  <header class="navbar" role="banner">
+    <div class="navbar-inner">
+      <a href="/" class="logo" aria-label="NewsSphere Home">NewsSphere</a>
+      <div class="nav-search">
+        <form id="search-form" class="search-form" role="search" aria-label="Search news">
+          <input type="search" id="search-input" class="search-input" placeholder="Search news..." autocomplete="off"
+            aria-label="Search keywords" />
+          <button type="submit" class="search-btn" aria-label="Submit search">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              aria-hidden="true">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.35-4.35" />
+            </svg>
+          </button>
+        </form>
+      </div>
+      <button type="button" id="hamburger" class="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-actions" id="nav-actions">
+        <select id="country-filter" class="filter-select" aria-label="Filter by country">
+          <option value="us">United States</option>
+          <option value="gb">United Kingdom</option>
+          <option value="in">India</option>
+          <option value="ca">Canada</option>
+          <option value="au">Australia</option>
+        </select>
+        <a href="saved.html" class="nav-link saved-link">Saved</a>
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"
+          title="Toggle dark mode">
+          <span class="icon-sun" aria-hidden="true">☀</span>
+          <span class="icon-moon" aria-hidden="true">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- Primary content: categories + article grid -->
+    <div class="main-content">
+      <!-- Category Tabs -->
+      <section class="categories" role="tablist" aria-label="News categories">
+        <button type="button" class="tab active" data-category="" role="tab" aria-selected="true">Headlines</button>
+        <button type="button" class="tab" data-category="business" role="tab">Business</button>
+        <button type="button" class="tab" data-category="technology" role="tab">Technology</button>
+        <button type="button" class="tab" data-category="sports" role="tab">Sports</button>
+        <button type="button" class="tab" data-category="entertainment" role="tab">Entertainment</button>
+        <button type="button" class="tab" data-category="health" role="tab">Health</button>
+        <button type="button" class="tab" data-category="science" role="tab">Science</button>
+      </section>
+
+      <!-- Filters: date sort -->
+      <div class="filters-row">
+        <span id="results-label" class="results-label">Top headlines</span>
+        <select id="date-sort" class="filter-select small" aria-label="Sort by date">
+          <option value="latest">Latest first</option>
+          <option value="oldest">Oldest first</option>
+        </select>
+      </div>
+
+      <!-- Loading spinner -->
+      <div id="loading" class="loading" role="status" aria-live="polite" hidden>
+        <div class="spinner"></div>
+        <p>Loading news...</p>
+      </div>
+
+      <!-- Error message -->
+      <div id="error-message" class="error-message" role="alert" hidden>
+        <p id="error-text"></p>
+        <button type="button" id="retry-btn" class="btn-retry">Try again</button>
+      </div>
+
+      <!-- No results -->
+      <div id="no-results" class="no-results" hidden>
+        <p>No articles found. Try a different search or category.</p>
+      </div>
+
+      <!-- Article grid -->
+      <section id="articles-grid" class="articles-grid" aria-label="News articles"></section>
+
+      <!-- Load more / infinite scroll trigger -->
+      <div id="load-more-wrap" class="load-more-wrap" hidden>
+        <button type="button" id="load-more-btn" class="btn-load-more">Load more</button>
+      </div>
+    </div>
+
+    <!-- Trending sidebar -->
+    <aside class="sidebar" aria-label="Trending articles">
+      <h2 class="sidebar-title">Trending</h2>
+      <div id="trending-loading" class="sidebar-loading" hidden>
+        <div class="spinner small"></div>
+      </div>
+      <div id="trending-list" class="trending-list"></div>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <p>NewsSphere &copy; <span id="year"></span> — Global news from multiple sources. Data via NewsAPI.</p>
+  </footer>
+
+  <!-- Toast notifications -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- Back to top -->
+  <button type="button" id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

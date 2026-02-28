@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Page Not Found - NewsSphere</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .error-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100vh - var(--navbar-height) - 80px);
+      text-align: center;
+      padding: 2rem;
+    }
+    .error-code {
+      font-family: var(--font-heading);
+      font-size: 8rem;
+      font-weight: 700;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--accent), #e8956d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0;
+    }
+    .error-title {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin: 1rem 0 0.5rem;
+    }
+    .error-desc {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin: 0 0 2rem;
+      max-width: 420px;
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar" role="banner">
+    <div class="navbar-inner">
+      <a href="/" class="logo" aria-label="NewsSphere Home">NewsSphere</a>
+      <div class="nav-actions">
+        <a href="/" class="nav-link">Home</a>
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <span class="icon-sun" aria-hidden="true">☀</span>
+          <span class="icon-moon" aria-hidden="true">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="error-page">
+    <p class="error-code">404</p>
+    <h1 class="error-title">Page not found</h1>
+    <p class="error-desc">The page you're looking for doesn't exist or has been moved. Let's get you back to the latest news.</p>
+    <a href="/" class="btn-primary">Back to Headlines</a>
+  </main>
+
+  <footer class="footer">
+    <p>NewsSphere &copy; <script>document.write(new Date().getFullYear())</script></p>
+  </footer>
+
+  <script>
+    // Theme support for 404 page
+    (function () {
+      const theme = localStorage.getItem('newssphere_theme');
+      if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+      const btn = document.getElementById('theme-toggle');
+      if (btn) btn.addEventListener('click', function () {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        if (isDark) { document.documentElement.removeAttribute('data-theme'); localStorage.setItem('newssphere_theme', 'light'); }
+        else { document.documentElement.setAttribute('data-theme', 'dark'); localStorage.setItem('newssphere_theme', 'dark'); }
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "newssphere",
+  "version": "1.0.0",
+  "description": "Global News Aggregator - NewsSphere",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node server/server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2"
+  }
+}

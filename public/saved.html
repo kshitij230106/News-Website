@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Your saved articles on NewsSphere. Access your bookmarked news anytime." />
+  <meta name="robots" content="noindex" />
+  <title>Saved News - NewsSphere</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header class="navbar" role="banner">
+    <div class="navbar-inner">
+      <a href="index.html" class="logo" aria-label="NewsSphere Home">NewsSphere</a>
+      <div class="nav-actions">
+        <a href="index.html" class="nav-link">Home</a>
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"
+          title="Toggle dark mode">
+          <span class="icon-sun" aria-hidden="true">☀</span>
+          <span class="icon-moon" aria-hidden="true">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="saved-page">
+    <h1 class="page-title">Saved News</h1>
+    <p class="page-desc">Articles you've bookmarked. Stored locally in your browser.</p>
+
+    <div id="saved-empty" class="saved-empty" hidden>
+      <p>You haven't saved any articles yet.</p>
+      <a href="index.html" class="btn-primary">Browse headlines</a>
+    </div>
+
+    <div id="saved-loading" class="loading" role="status" hidden>
+      <div class="spinner"></div>
+      <p>Loading saved articles...</p>
+    </div>
+
+    <section id="saved-grid" class="articles-grid saved-grid" aria-label="Saved articles"></section>
+  </main>
+
+  <footer class="footer">
+    <p>NewsSphere &copy; <span id="year"></span> — Your saved news.</p>
+  </footer>
+
+  <!-- Toast notifications -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <script src="config.js"></script>
+  <script src="saved.js"></script>
+</body>
+
+</html>
