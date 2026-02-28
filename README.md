@@ -1,3 +1,4 @@
+
 # NewsSphere — Global News Aggregator
 
 A responsive, full-stack news website that aggregates articles from multiple global sources. One-stop destination for diverse, real-time news with categories, search, trending panel, and saved articles.
@@ -151,3 +152,4 @@ The backend already sends `Access-Control-Allow-Origin: *` for GET requests, so 
 ## License
 
 MIT.
+
